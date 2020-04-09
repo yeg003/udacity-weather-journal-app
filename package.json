@@ -1,0 +1,25 @@
+{
+  "name": "udacity-weather-journal-app",
+  "version": "1.0.0",
+  "description": "Third project for the Udacity FrontEnd Developer Nanodegree.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeg003/udacity-weather-journal-app.git"
+  },
+  "author": "yeg003",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeg003/udacity-weather-journal-app/issues"
+  },
+  "homepage": "https://github.com/yeg003/udacity-weather-journal-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

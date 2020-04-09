@@ -1,15 +1,19 @@
 body{
     background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(80px, auto);
     /* grid-template-columns:  */
     height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    background: #4DA0B0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #D39D38, #4DA0B0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #D39D38, #4DA0B0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
@@ -17,7 +21,7 @@ body{
 }
 
 .holder{
-
+    padding-top: 20px;
 }
 
 .entry{
@@ -57,30 +61,38 @@ input{
     display:block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
+    background:rgba(250, 250, 250, 0.721);
+    color: #222;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'roboto', sans-serif;
     border: none;
 }
 
 button{
-    width: 400px;
-    height: 100px;
+    width: 250px;
+    height: 70px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+button:hover{
+    background: #fff;
+    color: #3b4a6b;
+}
+
 h1{
     font-size: 36px;
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
+    background:rgba(250, 250, 250, 0.721);
+    color: #222;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
@@ -93,7 +105,7 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: #222;
     font-family: 'Oswald', sans-serif;
 
 } 
