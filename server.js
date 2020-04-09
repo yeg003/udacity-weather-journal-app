@@ -47,7 +47,6 @@ app.post('/add', function (req, res ) {
         temp: req.body.temp,
         userResponse: req.body.userResponse,
     }
-    console.log(incomingData);
     projectData.push(incomingData);
     res.send(incomingData);
   }); 
