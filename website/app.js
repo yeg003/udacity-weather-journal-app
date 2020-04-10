@@ -29,18 +29,21 @@ function actionPerformed(e){
     weatherData(baseURL, zipCode, apiKey)
     .then(function(data){
         postData('/add' , {
-            temp: Math.round(data.main.temp), 
             date: newDate , 
-            userResponse: userResponse
-        });
-        appUI('/all');
+            temp: Math.round(data.main.temp), 
+            userResponse
+        })
+        .then(function (newData){
+            appUI();
+        })
+        
     });
-}
+};
 
 
 // async function that POST data from weather API
 const postData = async ( url = '', data = {})=>{
-       const res = await fetch(url, {
+       const req = await fetch(url, {
        method: 'POST', // *GET, POST, PUT, DELETE, etc.
        credentials: 'same-origin',
        headers: {
@@ -48,26 +51,32 @@ const postData = async ( url = '', data = {})=>{
            'Accept': 'application/json'
        },
       // Body data type must match "Content-Type" header        
-       body: JSON.stringify(data), 
+      body: JSON.stringify({
+        date: data.date,
+        temp: data.temp,
+        userResponse: data.userResponse
+      })
+
      });
      
        try {
-         const newData = await res.json();
+         const newData = await req.json();
          return newData;
        }catch(error) {
+         // appropriately handle the error
        console.log("error", error);
-       // appropriately handle the error
+      
        }
    }
 
    // async function to retrieve data from app
-   const appUI = async( url = '') =>{
-       const request = await fetch(url);
+   const appUI = async() =>{
+       const request = await fetch('/all');
        try {
            const addData = await request.json();
-           document.getElementById('temp').innerHTML = 'Temperature: ' + addData[0].temp;
-           document.getElementById('date').innerHTML = 'Date: ' + addData[0].date;
-           document.getElementById('content').innerHTML = "Today's feelings: " +addData[0].userResponse + "!";
+           document.getElementById('date').innerHTML = 'Date: ' + addData.date;
+           document.getElementById('temp').innerHTML = 'Temperature: ' + addData.temp;
+           document.getElementById('content').innerHTML = "Today's feelings: " + addData.content + "!";
        } catch (error) {
         console.log('error', error);
        };
